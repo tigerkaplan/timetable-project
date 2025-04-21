@@ -14,7 +14,6 @@ const Timetable = () => {
   const handlePrint = useReactToPrint({
     contentRef: tableRef,
     documentTitle: 'Timetable',
-    removeAfterPrint: true,
   });
 
   const [rows, setRows] = useState([
@@ -148,11 +147,12 @@ const Timetable = () => {
         </button>
 
         <button
-          onClick={handlePrint}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          PDF olarak indir
-        </button>
+  onClick={() => handlePrint()}
+  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+>
+  PDF olarak indir
+</button>
+
       </div>
     </div>
   );
