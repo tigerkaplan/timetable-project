@@ -41,24 +41,24 @@ const Timetable = () => {
   };
 
   return (
-    <div className="p-4">
-      <div ref={tableRef} className="bg-white p-4 rounded shadow max-w-6xl mx-auto">
+    <div className="p-4 bg-white dark:bg-gray-900 min-h-screen transition-colors duration-300">
+      <div ref={tableRef} className="bg-white dark:bg-gray-800 p-4 rounded shadow max-w-6xl mx-auto">
         <input
           type="text"
           value={pageTitle}
           onChange={(e) => setPageTitle(e.target.value)}
-          className="text-2xl font-bold mb-2 w-full text-center border-b border-gray-300"
+          className="text-2xl font-bold mb-2 w-full text-center border-b border-gray-300 dark:border-gray-600 bg-transparent text-black dark:text-white"
           data-testid="page-title"
         />
         <input
           type="text"
           value={groupTitle}
           onChange={(e) => setGroupTitle(e.target.value)}
-          className="mb-4 font-semibold w-full text-center border-b border-gray-300"
+          className="mb-4 font-semibold w-full text-center border-b border-gray-300 dark:border-gray-600 bg-transparent text-black dark:text-white"
           data-testid="group-title"
         />
-        <table className="w-full border border-collapse text-sm">
-          <thead className="bg-gray-200">
+        <table className="w-full border border-collapse text-sm text-black dark:text-white">
+          <thead className="bg-gray-200 dark:bg-gray-700">
             <tr>
               <th className="border p-2">#</th>
               <th className="border p-2">Öğrenci</th>
@@ -82,7 +82,7 @@ const Timetable = () => {
                     list="student-list"
                     value={row.student}
                     onChange={(e) => updateRow(i, 'student', e.target.value)}
-                    className="w-full border p-1 min-w-[10rem]"
+                    className="w-full border p-1 min-w-[10rem] bg-white dark:bg-gray-900 text-black dark:text-white"
                     data-testid="student-input"
                   />
                 </td>
@@ -91,7 +91,7 @@ const Timetable = () => {
                     list="lesson-list"
                     value={row.lessons}
                     onChange={(e) => updateRow(i, 'lessons', e.target.value)}
-                    className="w-full border p-1 min-w-[10rem]"
+                    className="w-full border p-1 min-w-[10rem] bg-white dark:bg-gray-900 text-black dark:text-white"
                   />
                 </td>
                 <td className="border p-2">
@@ -99,7 +99,7 @@ const Timetable = () => {
                     list="teacher-list"
                     value={row.teacher}
                     onChange={(e) => updateRow(i, 'teacher', e.target.value)}
-                    className="w-full border p-1"
+                    className="w-full border p-1 bg-white dark:bg-gray-900 text-black dark:text-white"
                   />
                 </td>
                 {['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'].map((day) => (
@@ -107,7 +107,7 @@ const Timetable = () => {
                     <select
                       value={row[day as keyof typeof row]}
                       onChange={(e) => updateRow(i, day, e.target.value)}
-                      className="w-full border p-1 min-w-[4rem]"
+                      className="w-full border p-1 min-w-[4rem] bg-white dark:bg-gray-900 text-black dark:text-white"
                       data-testid={`select-${day}-${i}`}
                     >
                       {hours.map((h) => (
@@ -147,12 +147,11 @@ const Timetable = () => {
         </button>
 
         <button
-  onClick={() => handlePrint()}
-  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
->
-  PDF olarak indir
-</button>
-
+          onClick={() => handlePrint()}
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          PDF olarak indir
+        </button>
       </div>
     </div>
   );
